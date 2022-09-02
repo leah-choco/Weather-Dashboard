@@ -1,6 +1,40 @@
 body{
-    display: flex;
-    margin: 0;
-    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.heading{
+    background-color: blueviolet;
+    color:aliceblue;
+    padding:10px;
+    text-align: center;
+}
+input{
+    width:75%;
+}
 
+#city-list{
+    width: 22rem;
+}
+
+#city-date-icon, #city-name, #current-icon{
+    display:flex;
+    flex-direction: row;
+    justify-content: center space-around space-between;
+}
+
+h6{
+    font-weight: bold;
+}
+
+h4{
+    margin:5px;
+}
+
+#forecast-cards{
+    display:flex;
+    flex-direction: row;
+    justify-content: center space-between;
+}
+
+.forecast{
+    margin:10px;
 }
