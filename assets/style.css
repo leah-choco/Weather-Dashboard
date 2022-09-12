@@ -1,8 +1,12 @@
+:root{
+    --main: blueviolet;
+}
+
 body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 header{
-    background-color: blueviolet;
+    background-color: var(--main);
     color:aliceblue;
     text-align: center;
     padding:10px;
@@ -39,7 +43,7 @@ header{
     color:white;
 }
 .card{
-    background-color: blueviolet;
+    background-color: var(--main);
 
 }
 .text-muted{
@@ -47,4 +51,7 @@ header{
 }
 #uv-index{
     color:white;
+}
+#search-btn{
+    background-color: var(--main);
 }
