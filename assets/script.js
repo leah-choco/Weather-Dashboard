@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    // OpenWeather API
-    const apiKey = "2adb0e1386fd4562a25991a6f5385a87";
+    // OpenWeather API(LearningBot Key, mine would not work)
+    const apiKey = "fc02d6d30dd32f5567b9706fc1c7ef42";
     
 
     // Selectors for HTML elements to display weather information
