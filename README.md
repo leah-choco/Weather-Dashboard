@@ -1,5 +1,5 @@
 # Weather-Dashboard
-Deployed Application: https://leah-choco.github.io/Weather-Dashboard/
+Deployed Application: 
 
 This app allows you to search different cities for the current weather as well as the 5 day Forecast.
 
