@@ -1,6 +1,32 @@
-// OpenWeather API(LearningBot Key, mine would not work)
-//const apiKey = "fc02d6d30dd32f5567b9706fc1c7ef42";
-const apiKey = "01799a4d0b2dee08aa5540200bac64d8";
+//My authoried OpenWeather API key
+var apiKey = "01799a4d0b2dee08aa5540200bac64d8";
+var searchedCity ="";
+var currentCity="";
+
+//This function gets the conditons from the API and displays it
+var fetchCurrentWeather= function(event){
+  currentCity = ('#search-city').val();
+  var mainURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  fetch(mainURL)
+  .then(function(response){
+    console.log(response)
+    return response.json()
+  }).then(function(data){
+    console.log(data)
+  })
+}
+
+//URL for icons for the current weather displayed
+var iconsCurrentWeather=//"https://openweathermap.org/img/w/" + weather[0].icon + ".png";
+console.log(iconsCurrentWeather)
+
+
+/*Formatting timezone 
+var currentTime = response.dt;
+var timeZone = response.timezone;
+var currentHours = timeZone /60 /60;
+var currentMoment = moment.unix(currentTime).utc().utcOffset(currentHours);*/
+
 
 // Store past searched cities
 let pastCities = [];
@@ -18,19 +44,11 @@ function storeCities() {
   localStorage.setItem("pastCities", JSON.stringify(pastCities));
 }
 
-// Functions to build the URL for the OpenWeather API call
-
-function buildURLFromInputs(city) {
-  if (city) {
-    return `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-  }
-}
-
-function buildURLFromId(id) {
+/*function buildURLFromId(id) {
   return `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${apiKey}`;
-}
+}*/
 // Function to display the last 5 searched cities
-function displayCities(pastCities) {}
+//function displayCities(pastCities) {}
 
 // Function to color the UV Index based on EPA color scale
 function setUVIndexColor(uvi) {
@@ -46,17 +64,17 @@ function setUVIndexColor(uvi) {
 }
 
 // Search for weather conditions by calling the OpenWeather API
-function searchWeather(URL) {
+/*function searchWeather(URL) {
     fetch(URL).then(function(response){
         console.log(response)
         return response.json()
     }) .then(function(data){
         console.log(data)
     })
-}
+}*/
 
-// Call OpenWeather API OneCall with lat and lon to get the UV index and 5 day forecast
-/*let lat = response.coord.lat;
+/*Call OpenWeather API OneCall with lat and lon to get the UV index and 5 day forecast
+let lat = response.coord.lat;
   let lon = response.coord.lon;
   let latLon = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;*/
 // Function to display the last searched city
@@ -66,7 +84,7 @@ function displayLastSearchedCity() {
 }
 // load any cities in local storage into array
 loadCities();
-displayCities(pastCities);
+
 
 // Display weather for last searched city
 displayLastSearchedCity();
@@ -84,7 +102,7 @@ $("#search-btn").on("click", function (event) {
 
   // Build the query url with the city and searchWeather
   if (city) {
-    let queryURL = buildURLFromInputs(city);
+    let queryURL = fetchCurrentWeather(city);
     console.log(queryURL);
     searchWeather(queryURL);
   }
