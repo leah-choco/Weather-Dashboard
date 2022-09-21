@@ -26,7 +26,7 @@ var iconsCurrentWeather=//"https://openweathermap.org/img/w/" + weather[0].icon 
 console.log(iconsCurrentWeather)
 
 
-Formatting timezone 
+//Formatting timezone 
 let currentTime = response.dt;
 let timeZone = response.timezone;
 let currentHours = timeZone /60 /60;
@@ -61,7 +61,7 @@ let htmlCurrentWeather = `
   })
   .then((response) => {
   // Function to color the UV Index based on EPA color scale
-  let setUVIcolor(uvi) {
+  let setUVIcolor=(uvi) =>{
   if (uvi < 3) {
     return "green";
   } else if (uvi >= 3 && uvi < 6) {
