@@ -4,15 +4,20 @@ var searchedCity ="";
 var currentCity="";
 
 //This function gets the conditons from the API and displays it
-var fetchCurrentWeather= function(event){
-  currentCity = ('#search-city').val();
+var fetchCurrentWeather= (event) => {
+  let city = $("#search-city").val();
+  currentCity = $('#search-city').val();
   var mainURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   fetch(mainURL)
-  .then(function(response){
+  .then((response) => {
     console.log(response)
     return response.json()
-  }).then(function(data){
-    console.log(data)
+
+  })
+  .then((response) => {
+    //localStorage
+    saveCity(city);
+    $("#search-error").text("");
   })
 }
 
@@ -21,37 +26,42 @@ var iconsCurrentWeather=//"https://openweathermap.org/img/w/" + weather[0].icon 
 console.log(iconsCurrentWeather)
 
 
-/*Formatting timezone 
-var currentTime = response.dt;
-var timeZone = response.timezone;
-var currentHours = timeZone /60 /60;
-var currentMoment = moment.unix(currentTime).utc().utcOffset(currentHours);*/
+Formatting timezone 
+let currentTime = response.dt;
+let timeZone = response.timezone;
+let currentHours = timeZone /60 /60;
+let currentMoment = moment.unix(currentTime).utc().utcOffset(currentHours);
 
+displayCities();
 
-// Store past searched cities
-let pastCities = [];
+//"5 day" for the city that was searched
+getForecastFiveDays(event);
 
-// Load events from local storage
-function loadCities() {
-  const storedCities = JSON.parse(localStorage.getItem("pastCities"));
-  if (storedCities) {
-    pastCities = storedCities;
-  }
-}
+//innerHTML for search results
+let htmlCurrentWeather = `
+  <h3>${response.name} ${currentMoment.format("(MM/DD/YY)")}<img src="${currentWeatherIcon}"></h3>
+  <ul class="list-unstyled">
+    <li>Temperature: ${response.main.temp}&#8457;</li>
+    <li>Humidity: ${response.main.humidity}%</li>
+    <li>Wind Speed: ${response.wind.speed} mph</li>
+    <li id="uvColors"> UV Index:</li>
+  </ul>`;
 
-// Store searched cities in local storage
-function storeCities() {
-  localStorage.setItem("pastCities", JSON.stringify(pastCities));
-}
+  //Appending the results to the DOM
+  $("#currrent-weather").html(htmlCurrentWeather);
 
-/*function buildURLFromId(id) {
-  return `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${apiKey}`;
-}*/
-// Function to display the last 5 searched cities
-//function displayCities(pastCities) {}
-
-// Function to color the UV Index based on EPA color scale
-function setUVIndexColor(uvi) {
+  //Call OpenWeather API OneCall with lat and lon to get the UV index
+  let lat = response.coord.lat;
+  let lon = response.coord.lon;
+  let latLonURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`
+  
+  fetch(latLonURL)
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+  // Function to color the UV Index based on EPA color scale
+  let setUVIcolor(uvi) {
   if (uvi < 3) {
     return "green";
   } else if (uvi >= 3 && uvi < 6) {
@@ -62,6 +72,8 @@ function setUVIndexColor(uvi) {
     return "red";
   }
 }
+  })
+
 
 // Search for weather conditions by calling the OpenWeather API
 /*function searchWeather(URL) {
@@ -73,10 +85,7 @@ function setUVIndexColor(uvi) {
     })
 }*/
 
-/*Call OpenWeather API OneCall with lat and lon to get the UV index and 5 day forecast
-let lat = response.coord.lat;
-  let lon = response.coord.lon;
-  let latLon = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;*/
+
 // Function to display the last searched city
 function displayLastSearchedCity() {
   // Click handler for city buttons to load that city's weather
