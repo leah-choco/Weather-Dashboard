@@ -1,5 +1,7 @@
 :root{
     --main: blueviolet;
+    --text: aliceblue;
+
 }
 
 body{
@@ -8,51 +10,51 @@ body{
 
 header{
     background-color: var(--main);
-    color:aliceblue;
+    color: var(--text);
     text-align: center;
     padding:10px;
 }
 
 
-.cityList{
-    margin-top:20px;
+#city-search{
+    width:80%;
 }
 
-.recent-searches{
-    font-size: 10px;
+#weather-current{
+    padding-left:15px;
 }
 
-.city{
-    padding:10px;
+#clear-storage{
+    color: gray;
+    font-size: .75rem;
+    margin: .5em 0em 0em .5em;
 }
 
-.currentWeather{
-    margin-bottom: 20px;
-
-}
-
-.fiveDay h2{
- font-size:1.2rem;
-
-}
-.fiveDay p{
-    font-size:.8rem;
-
-}
-.fiveDay .card-title{
-    font-weight: bold;
-    color:white;
-}
-.card{
+.weather-cards{
+    width: 9 rem;
     background-color: var(--main);
+    color: var(--main);
+    text-align: center;
+}
 
+.uv-favorable{
+    background-color: rgb(126, 205, 6);
+    border-radius: 5px;
+    color: var(--text)
 }
-.text-muted{
-    color:white !important;
+
+.uv-moderate{
+    background-color: rgb(244, 171, 36);
+    border-radius: 5px;
+    color: var(--text);
 }
-#uv-index{
-    color:white;
+
+.uv-severe{
+    background-color: rgb(243, 68, 68);
+    border-radius: 5px;
+    color:var(--text);
 }
+
 #search-btn{
     background-color: var(--main);
 }
