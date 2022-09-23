@@ -15,46 +15,36 @@ header{
     padding:10px;
 }
 
-
-#city-search{
-    width:80%;
-}
-
-#weather-current{
-    padding-left:15px;
-}
-
-#clear-storage{
-    color: gray;
-    font-size: .75rem;
-    margin: .5em 0em 0em .5em;
-}
-
-.weather-cards{
-    width: 9 rem;
-    background-color: var(--main);
-    color: var(--main);
-    text-align: center;
-}
-
-.uv-favorable{
+/*Styling the UV background*/
+.uv-good{
     background-color: rgb(126, 205, 6);
-    border-radius: 5px;
     color: var(--text)
 }
 
-.uv-moderate{
+.uv-medium{
     background-color: rgb(244, 171, 36);
-    border-radius: 5px;
     color: var(--text);
 }
 
-.uv-severe{
+.uv-bad{
     background-color: rgb(243, 68, 68);
-    border-radius: 5px;
     color:var(--text);
 }
 
+/* Wanted the search button to match the header*/
 #search-btn{
     background-color: var(--main);
+}
+
+/* Used JS dynamically created classes to style the headers and today's weather data.*/
+.list-unstyled{
+    text-align: center;
+}
+
+.name-style{
+    text-align: center;
+}
+
+.forecast-style{
+    text-align: center;
 }

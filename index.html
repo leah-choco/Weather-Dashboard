@@ -6,46 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"/>
     <link rel="stylesheet" href="./assets/style.css"/>
-    <title>Weather Dashboard</title>
+    <title>Weather Forecast</title>
 </head>
 
 <body>
     <header class="container">
-        <div class="title">
-            <h1>Weather Dashboard</h1>
-        </div>
+        <h1>Weather Forecast</h1>
     </header>
 
     <main class="container" id="content">
         <div class="row">
-
-            <!--Left Columns for the search box-->
-            <div class="col-md-3" id="left-content">
+            <!--Left Columns for the search box and previously searched cities-->
+            <div class="col-md-3">
                 <form>
-                    <label for="city-search">Search for Your City:</label>
+                    <label for="search-city">Search for Your City:</label>
                     <div class="form-row">
                         <input id="city-search" class="form-control" name="city" value="New York"></input>
                         <button id="search-btn" class="btn btn-primary" type="submit">Search</button>
                     </div>
                 </form>
-                <div id="search-error"></div>
-                <!--Past searched cities-->
+                <div id="error-search"></div>
+                <!--Past searched cities displayed using JS-->
                 <ul class="list-group mt-4" id="results-city"></ul>
             </div>
             
             <!--Right Columns for current and future weather forecasts-->
-            <div class="col-md-9 pt-4" id="right-content">
+            <div class="col-md-9 pt-4">
                 <!--Current Weather displayed here-->
-                <div class="border rounded" id="weather-current"></div>
+                <div class="border" id="weather-current"></div>
                 <!--Forecast for the future 5 days-->
-                <div class="mt-5" id="forecast-five-day"></div>
+                <div class="mt-5" id="forecast-future"></div>
             </div> 
         </div>
     </main> 
 
-    
     <!--Jquery, Moment.js, JS Bootstrap-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
