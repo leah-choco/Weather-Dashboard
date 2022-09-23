@@ -1,5 +1,5 @@
 # Weather-Dashboard
-Deployed Application: 
+Deployed Application:  https://leah-choco.github.io/Weather-Forecast/
 
 This application allows you to search different cities for today's weather conditions as well as the future forecast. 
 
